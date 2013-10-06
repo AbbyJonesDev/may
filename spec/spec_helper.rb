@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
+require "paperclip/matchers"
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -27,6 +28,20 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  #  Clean database before and after tests
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
@@ -37,6 +52,13 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # Enable matchers for testing Paperclip
+  config.include Paperclip::Shoulda::Matchers
+
+  # Enable Devise test helpers
+  config.include Devise::TestHelpers, :type => :controller
+
 
   # Set up Paperclip so that tests run parallel don't overwrite each other's data 
   # or change :path in ways that cause tests to fail.

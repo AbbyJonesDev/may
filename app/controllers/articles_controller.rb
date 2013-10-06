@@ -7,7 +7,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create!(params[:article])
+    debugger
+    # Uncomment line 12 when ready to make Cucumber test go green
+    # @article = Article.create!(params.require(:article).permit!)
     flash[:notice] = "#{@article.title} was successfully created."
     redirect_to articles_path
   end
