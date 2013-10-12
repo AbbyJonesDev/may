@@ -3,13 +3,16 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    # debugger
   end
 
   def create
-    debugger
-    # Uncomment line 12 when ready to make Cucumber test go green
-    # @article = Article.create!(params.require(:article).permit!)
+    @article = Article.new
+    @article.title = params[:article][:title]
+    @article.body = params[:article][:body]
+    @article.keywords = params[:article][:keywords]
+    @article.photo = params[:article][:photo]
+    @article.user_id = current_user.id
+    @article.save!
     flash[:notice] = "#{@article.title} was successfully created."
     redirect_to articles_path
   end
@@ -33,7 +36,6 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    # debugger
     @articles = Article.all
   end
 

@@ -6,6 +6,9 @@
 
 <h2> <%= @article.title %> </h2>
 
-<%= image_tag @article.photo.url(:original) -%>
+
+<%= image_tag @article.photo.url(:medium) -%>
 
 <p> <%= @article.body %> </p>
+
+<p> <%= @article.keywords %> </p>

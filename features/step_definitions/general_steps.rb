@@ -14,3 +14,8 @@ end
 And /I attach a photo with path "(.*)"/ do |path|
   page.attach_file('article_photo', File.join(Rails.root, path))
 end
+
+Then(/^I should see "(.*?)"$/) do |arg1|
+  page.should have_content(arg1)
+end
+
