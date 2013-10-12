@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
   # attr_accessible :photo
   has_attached_file :photo, 
     :styles => { :medium => "300x300>", :thumb => "100x100>" },
-    :default_url => '/photos/:style/missing.jpg'
+    :default_url => ':rails_root/app/assets/images/:style/coffee_cup.jpg'
     # :path => ":rails_root/public/system/:attachment/:style/:filename",
     # :url => "/articles/:id/photo(.:format)" 
 

@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @article.keywords = params[:article][:keywords]
     @article.photo = params[:article][:photo]
     @article.user_id = current_user.id
-    @article.save!
+    @article.save
     flash[:notice] = "#{@article.title} was successfully created."
     redirect_to articles_path
   end
@@ -27,7 +27,12 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find params[:id]
-    @article.update_attributes!(params[:article])
+    @article.update_attribute(:title, params[:article][:title])
+    @article.update_attribute(:body, params[:article][:body])
+    @article.update_attribute(:keywords, params[:article][:keywords])
+    if params[:article][:photo]
+      @article.update_attribute(:photo, params[:article][:photo])
+    end
     flash[:notice] = "#{@article.title} was successfully updated."
     redirect_to article_path(@article)
   end

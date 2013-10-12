@@ -2,3 +2,13 @@
   <meta title="Edit Article">
   <meta name="description" content="Edit an existing blog article">
 <% end %>
+
+<h2> Edit Article </h2> 
+
+<%= simple_form_for @article, :html => {:multipart => true } do |f| %>
+  <%= f.input :title, required: true %>
+  <%= f.input :body, required: true %>
+  <%= f.input :keywords %>
+  <%= f.input :photo, :as => :file %>
+  <%= f.button :submit  %>
+<% end %>
