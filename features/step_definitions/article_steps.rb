@@ -4,18 +4,6 @@ Given(/^an article by "(.*?)" titled "(.*?)" with body:$/) do |name, title, text
   Article.create!({user_id: '1', title: title, body: text})
 end
 
-Given(/^I am logged in as a site owner or writer$/) do
-  name = "My Name"
-  email = 'testing@man.net'
-  password = 'secretpass'
-  User.new(name: name, email: email, password: password, password_confirmation: password).save!
-
-  visit '/users/sign_in'
-  fill_in "user_email", :with => email
-  fill_in "user_password", :with => password
-  click_button "Sign in"
-end
-
 
 ### Scenario Steps
 
@@ -25,6 +13,10 @@ end
 
 Given /I am on the "Articles" page/ do
   visit(articles_path)
+end
+
+Given /I am on the "New Article" page/ do
+  visit(new_article_path)
 end
 
 Given(/^I click on article titled "(.*?)"$/) do |title|

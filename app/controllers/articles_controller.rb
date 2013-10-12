@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
 
+  # ensure admin for other actions
+  before_filter :check_admin_logged_in!, :except => [:show, :index]
+
+
 
   def new
     @article = Article.new
@@ -44,4 +48,18 @@ class ArticlesController < ApplicationController
     @article = Article.find(id)
   end
 
+  private
+    def check_admin_logged_in! # if admin is not logged in, user must be logged in as admin
+      if !current_user.try(:admin?)
+        flash[:notice] = "You must be an administrator to perform this function."
+        return redirect_to articles_path
+      end   
+    end
+    def check_user_logged_in! # User must be logged in
+      if !user_signed_in?
+        authenticate_user!
+      end
+    end
+
+  
 end
