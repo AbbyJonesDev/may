@@ -16,9 +16,13 @@ class ArticlesController < ApplicationController
     @article.keywords = params[:article][:keywords]
     @article.photo = params[:article][:photo]
     @article.user_id = current_user.id
-    @article.save
-    flash[:notice] = "#{@article.title} was successfully created."
-    redirect_to articles_path
+    if @article.save
+      flash[:notice] = "#{@article.title} was successfully created."
+      redirect_to articles_path
+    else
+      flash[:warning] = @article.errors.full_messages
+      render action: 'new'
+    end
   end
 
   def edit
@@ -27,11 +31,9 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find params[:id]
-    @article.update_attribute(:title, params[:article][:title])
-    @article.update_attribute(:body, params[:article][:body])
-    @article.update_attribute(:keywords, params[:article][:keywords])
+    @article.update(title: params[:article][:title], body: params[:article][:body], keywords: params[:article][:keywords] )
     if params[:article][:photo]
-      @article.update_attribute(:photo, params[:article][:photo])
+      @article.update(photo: params[:article][:photo])
     end
     flash[:notice] = "#{@article.title} was successfully updated."
     redirect_to article_path(@article)
