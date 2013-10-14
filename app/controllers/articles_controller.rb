@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
     @article.user_id = current_user.id
     if @article.save
       flash[:notice] = "#{@article.title} was successfully created."
-      redirect_to articles_path
+      redirect_to @article
     else
       flash[:warning] = @article.errors.full_messages
       render action: 'new'
