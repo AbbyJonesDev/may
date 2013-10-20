@@ -1,0 +1,18 @@
+<% content_for :head do %> 
+  <meta title="New Song">
+  <meta name="description" content="Upload a new song ">
+<% end %>
+
+<h2> Upload A New Song </h2> 
+
+<%= simple_form_for @song, :html => {:multipart => true } do |f| %>
+  <%= f.input :title, required: true %>
+  <%= f.input :description, required: true, placeholder: 'Enter dazzling description here...' %>
+  <%= f.input :scripture %>
+  <%= f.input :copyright %>
+  <%= f.input :CCLI %>
+  <%= f.input :keywords %>
+  <%= f.input :mp3, :as => :file %>
+  <%= f.input :chord_chart, :as => :file %>
+  <%= f.button :submit  %>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131005185148) do
+ActiveRecord::Schema.define(version: 20131020191913) do
 
   create_table "articles", force: true do |t|
     t.integer  "user_id"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20131005185148) do
     t.integer  "CCLI"
     t.string   "scripture"
     t.string   "keywords"
+    t.string   "mp3_file_name"
+    t.string   "mp3_content_type"
+    t.integer  "mp3_file_size"
+    t.datetime "mp3_updated_at"
+    t.string   "chord_chart_file_name"
+    t.string   "chord_chart_content_type"
+    t.integer  "chord_chart_file_size"
+    t.datetime "chord_chart_updated_at"
   end
 
   create_table "users", force: true do |t|

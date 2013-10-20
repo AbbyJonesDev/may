@@ -1,0 +1,19 @@
+<% content_for :head do %>
+  <% title = @song.title %> 
+  <meta title= <%= title %> >
+  <meta name="description" content="  ">
+<% end %>
+
+<h2> <%= @song.title %> </h2>
+
+<p> <%= @song.description %> </p>
+
+<p> Keywords: <%= @song.keywords %> </p>
+
+<%= audio_tag @song.mp3.url %>
+
+
+<% if current_user.try(:admin?) %>
+  <%= link_to "Edit song", edit_song_path(@song) %> <br>
+  <%= link_to "Delete song", song_path(@song), :method => :delete, :confirm => "Are you sure?" %>
+<% end %>

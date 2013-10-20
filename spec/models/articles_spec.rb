@@ -2,12 +2,7 @@ require 'spec_helper'
 
 describe Article do 
 
-   it "should validate that user is an admin" do
-      user = FactoryGirl.create(:user)
-      article = FactoryGirl.build(:article)
-      author = User.find_by_id(article.user_id)
-      expect(author.admin).to eq(true)
-  end
+   
 
   it "should validate presence of title" do
 
@@ -39,4 +34,24 @@ describe Article do
     expect(article.preview).to eq("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the...")
   end
 
+end
+
+##  From Michael Hartl tutorial
+describe User do
+
+  before do
+    @user = User.new(name: "Example User", email: "user@example.com")
+  end
+
+  subject { @user }
+
+  it { should respond_to(:name) }
+  it { should respond_to(:email) }
+
+  it { should be_valid }
+
+  describe "when name is not present" do
+    before { @user.name = " " }
+    it { should_not be_valid }
+  end
 end

@@ -10,11 +10,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new
-    @article.title = params[:article][:title]
-    @article.body = params[:article][:body]
-    @article.keywords = params[:article][:keywords]
-    @article.photo = params[:article][:photo]
+    @article = Article.new(article_params)
     @article.user_id = current_user.id
     if @article.save
       flash[:notice] = "#{@article.title} was successfully created."
@@ -31,12 +27,13 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find params[:id]
-    @article.update(title: params[:article][:title], body: params[:article][:body], keywords: params[:article][:keywords] )
-    if params[:article][:photo]
-      @article.update(photo: params[:article][:photo])
+    if @article.update(article_params)
+      flash[:notice] = "#{@article.title} was successfully updated."
+      redirect_to article_path(@article)
+    else
+      flash[:warning] = @article.errors.full_messages
+      render action: "edit"
     end
-    flash[:notice] = "#{@article.title} was successfully updated."
-    redirect_to article_path(@article)
   end
 
   def destroy
@@ -66,6 +63,9 @@ class ArticlesController < ApplicationController
       if !user_signed_in?
         authenticate_user!
       end
+    end
+    def article_params
+      params.require(:article).permit(:title, :body, :keywords, :photo)
     end
 
   

@@ -15,8 +15,10 @@ class Article < ActiveRecord::Base
             presence: true
   validates :user_id,
             presence: true
-  validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/jpg', 'image/png']
+  # TODO - enable validation of attachment size that doesn't throw error on update if no new photo is attached
+  # validates_attachment_size :photo, :less_than => 5.megabytes
+
 
   def preview
     words = self.body.split(' ')

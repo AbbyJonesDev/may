@@ -1,0 +1,21 @@
+<% content_for :head do %> 
+  <meta title="Music Homepage">
+  <meta name="description" content="  ">
+<% end %>
+
+
+
+<h1> Music </h1>
+
+<%= link_to "New", new_song_path if current_user.try(:admin?) %>
+
+
+<div class="song_list">
+  <% @songs.each do  |song| -%>
+    <div class="each_song">
+      <p> <%= link_to song.title, song_path(song.id) -%>  </p>
+      <p> <%= song.description -%> </p>
+    </div>
+  <% end -%>
+</div>
+
