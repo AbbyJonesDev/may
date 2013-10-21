@@ -10,7 +10,7 @@
 
 <p> Keywords: <%= @song.keywords %> </p>
 
-<%= audio_tag @song.mp3.url %>
+<%= audio_tag @song.mp3.url, controls: true, autobuffer: true %> 
 
 
 <% if current_user.try(:admin?) %>

@@ -9,7 +9,7 @@
   <%= f.input :title, required: true %>
   <%= f.input :description, required: true, placeholder: 'Enter dazzling description here...' %>
   <%= f.input :scripture %>
-  <%= f.input :copyright %>
+  <%= f.input :copyright, :as => :date, :input_html => { :class => 'date_picker' } %>
   <%= f.input :CCLI %>
   <%= f.input :keywords %>
   <%= f.input :mp3, :as => :file %>
