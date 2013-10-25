@@ -6,6 +6,14 @@ And /I click on "(.*)"/ do |link|
   click_on(link)
 end
 
+And /I click on the "(.*)"/ do |link|
+  click_on(link)
+end
+
+When(/^I click "(.*?)"$/) do |link|
+  click_on(link)
+end
+
 When(/^I fill in "(.*?)" with "(.*?)"$/) do |field, value|
   fill_in(field, :with => value)
 end
@@ -21,6 +29,12 @@ end
 Then(/^I should not see a "(.*?)" link$/) do |link|
   page.should have_no_link(link)
 end
+
+# When /^(?:|I )fill in the following:$/ do |fields|
+#   fields.rows_hash.each do |name, value|
+#     When %{I fill in "#{name}" with "#{value}"}
+#   end
+# end
 
 
 
