@@ -28,7 +28,6 @@ Then(/^I should be on the article page for "(.*?)"$/) do |title|
 end
 
 Then(/^I should see the full text of the article "(.*?)"$/) do |title|
-  save_and_open_page
   page.should have_content(Article.find_by_title(title).body)
 end
 

@@ -45,6 +45,10 @@ Given(/^I am not logged in$/) do
   current_user = nil
 end
 
+Given(/^I am logged out$/) do
+  click_on("Logout")
+end
+
 Given(/^I am logged in as a visitor$/) do
   name = "visitor Name"
   email = 'visitor@man.net'

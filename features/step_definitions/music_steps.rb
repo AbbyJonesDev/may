@@ -24,3 +24,7 @@ end
 Then(/^I should see an error message$/) do
   page.should have_content("can't be blank")
 end
+
+Then(/^I should not be able to add music$/) do
+  page.should have_no_link("New")
+end
