@@ -4,7 +4,7 @@ Feature: Music page
   I should be able to post music to my website
 
 Background:
-  Given I am logged in as a site owner or writer
+  Given I am logged in as a site owner
   And I am on the "Music" page
 
 Scenario:

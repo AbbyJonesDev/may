@@ -7,7 +7,7 @@ Background:
   
 
 Scenario:
-  Given I am logged in as a site owner or writer
+  Given I am logged in as a site owner
   And I am on the "Articles" page
   When I click on "New"
   And I fill in "Title" with "My First Article"

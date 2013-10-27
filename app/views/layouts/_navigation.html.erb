@@ -26,4 +26,9 @@
     <%= link_to('Sign up', new_user_registration_path)  %>
     </li>
   <% end %>
+  <% if current_user.try(:admin?) %>
+    <li>
+      <%= link_to("Manage Users", users_path) %>
+    </li>
+  <% end %>
 </ul>

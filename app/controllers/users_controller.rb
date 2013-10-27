@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_filter :check_admin_logged_in!, :only => [:index]
+
   def new
     #Form to create a new user
     #For admins only - will have option to select type of user
@@ -23,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
   end
 
   def delete
@@ -31,6 +35,21 @@ class UsersController < ApplicationController
   def confirmation
   end
 
+  private
+    def check_admin_logged_in! # if admin is not logged in, user must be logged in as admin
+      if !current_user.try(:admin?)
+        flash[:notice] = "You must be an administrator to perform this function."
+        return redirect_to "/"
+      end   
+    end
+    def check_user_logged_in! # User must be logged in
+      if !user_signed_in?
+        authenticate_user!
+      end
+    end
+    def user_params
+      params.require(:user).permit(:name, :email, :password)
+    end
 
 
 end

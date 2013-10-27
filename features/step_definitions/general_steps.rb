@@ -61,7 +61,7 @@ Given(/^I am logged in as a visitor$/) do
   click_button "Sign in"
 end
 
-Given(/^I am logged in as a site owner or writer$/) do
+Given(/^I am logged in as a site owner$/) do
   name = "My Name"
   email = 'testing@man.net'
   password = 'secretpass'
@@ -72,3 +72,11 @@ Given(/^I am logged in as a site owner or writer$/) do
   fill_in "user_password", :with => password
   click_button "Sign in"
 end
+
+Given(/^the site has registered users$/) do
+  User.create(name: "Name One", email: "email1@email.com", password: "one", password_confirmation: "one")
+  User.create(name: "Name Two", email: "email2@email.com", password: "Two", password_confirmation: "Two")
+  User.create(name: "Name Three", email: "email3@email.com", password: "Three", password_confirmation: "Three")
+  User.create(name: "Name Four", email: "email4@email.com", password: "Four", password_confirmation: "Four")
+end
+

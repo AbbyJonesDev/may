@@ -1,0 +1,21 @@
+<% content_for :head do %> 
+  <meta title="User Index">
+  <meta name="description" content="  ">
+<% end %>
+
+
+
+<h1> Registered Users </h1>
+
+<%= link_to "New", new_user_path if current_user.try(:admin?) %>
+
+
+<div class="user_list">
+  <% @users.each do  |user| -%>
+    <div class="each_user">
+      <p> <%= link_to user.name, edit_user_path(user.id) -%>  </p>
+      <p> <%= user.email -%> </p>
+      <p> Admin: <%= user.admin? -%> </p>
+    </div>
+  <% end -%>
+</div>
