@@ -13,8 +13,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    #Displays form for editing an existing user
-    #Only admin level users can edit a user besides him/herself
+    if current_user.try(:admin?)
+      @user = params[:id]
+    elsif current_user.id == params[:id]
+      @user = params[:id]
+    else
+      flash[:warning] = "You must be an administrator to perform this function."
+      return redirect_to '/'
+    end
   end
 
   def update
@@ -23,6 +29,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user.try(:admin?)
+      @user = params[:id]
+    elsif current_user.id == params[:id]
+      @user = params[:id]
+    else
+      flash[:warning] = "You must be an administrator to perform this function."
+      return redirect_to '/'
+    end
   end
 
   def index

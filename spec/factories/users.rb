@@ -4,7 +4,7 @@ FactoryGirl.define do
     name "My Name"
     email "myname@email.com"
     password "password"
-    id "1"
-    admin true
+    # id "1"
+    admin false
   end
 end

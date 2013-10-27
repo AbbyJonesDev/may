@@ -10,3 +10,7 @@ Background:
 Scenario:
   Given I click "Manage Users"
   Then I should see a list of all users
+
+Scenario:
+  Given I am logged out
+  Then I should not be able to edit users
