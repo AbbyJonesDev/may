@@ -1,1 +1,13 @@
-<h1> Edit Account </h1>
+<% content_for :head do %> 
+  <meta title="Edit User">
+  <meta name="description" content="Admin form for editing a user">
+<% end %>
+
+<h1> Edit user account </h1>
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.input :admin, as: :boolean  %>
+  <%= f.button :submit %>
+<% end %>

@@ -1,2 +1,19 @@
+<% content_for :head do %> 
+  <meta title="New User">
+  <meta name="description" content="Admin form for creating a new user">
+<% end %>
+
 <h1> Create a new user account </h1>
 
+<div class="form-inputs">
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :name, required: true %>
+    <%= f.input :email, required: true %>
+    <%= f.input :password, :required => true %>
+    <%= f.input :password_confirmation, :required => true  %>  
+    <%= f.input :admin, as: :boolean  %>
+</div>
+<div class="form-actions"> 
+  <%= f.button :submit, "Create User"  %>
+  <% end %>
+</div>

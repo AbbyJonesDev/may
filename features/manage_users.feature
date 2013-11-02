@@ -6,10 +6,16 @@ Feature: Manage Users
 Background:
   Given I am logged in as a site owner
   And the site has registered users
+  Given I click "Manage Users"
 
 Scenario:
-  Given I click "Manage Users"
+  When I click "New"
+  Then I can add a new user
+
+Scenario:
   Then I should see a list of all users
+  And I can select a user
+  And I can edit user details
 
 Scenario:
   Given I am logged out

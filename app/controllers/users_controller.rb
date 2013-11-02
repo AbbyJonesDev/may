@@ -3,19 +3,30 @@ class UsersController < ApplicationController
   before_filter :check_admin_logged_in!, :only => [:index]
 
   def new
-    #Form to create a new user
-    #For admins only - will have option to select type of user
+    if current_user.try(:admin?)
+      @user = User.new
+    else
+      flash[:warning] = "You must be an administrator to perform this function."
+      return redirect_to '/'
+    end
   end
 
   def create
-    #Creates new user account
-    #Redirects to confirmation page upon successful account creation
+    @user = User.new(user_params)
+    if @user.save
+      flash[:notice] = "#{@user.email} was successfully created."
+      redirect_to @user
+    else
+      flash[:warning] = @user.errors.full_messages
+      render action: "new"
+    end
   end
+
 
   def edit
     if current_user.try(:admin?)
-      @user = params[:id]
-    elsif current_user.id == params[:id]
+      @user = User.find(params[:id])
+    elsif session[:current_user] == params[:id]
       @user = params[:id]
     else
       flash[:warning] = "You must be an administrator to perform this function."
@@ -24,14 +35,20 @@ class UsersController < ApplicationController
   end
 
   def update
-    #Applies changes from edit form
-    #Redirects to confirmation page upon completion of successful changes
-  end
+    @user = User.find params[:id]
+    if @user.update(user_params)
+      flash[:notice] = "#{@user.email} was successfully updated."
+      redirect_to user_path(@user)
+    else
+      flash[:warning] = @user.errors.full_messages
+      render action: "edit"
+    end 
+  end 
 
   def show
     if current_user.try(:admin?)
-      @user = params[:id]
-    elsif current_user.id == params[:id]
+      @user = User.find(params[:id])
+    elsif session[:current_user] == params[:id]
       @user = params[:id]
     else
       flash[:warning] = "You must be an administrator to perform this function."

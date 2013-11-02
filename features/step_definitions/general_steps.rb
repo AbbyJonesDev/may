@@ -74,9 +74,9 @@ Given(/^I am logged in as a site owner$/) do
 end
 
 Given(/^the site has registered users$/) do
-  User.create(name: "Name One", email: "email1@email.com", password: "one", password_confirmation: "one")
-  User.create(name: "Name Two", email: "email2@email.com", password: "Two", password_confirmation: "Two")
-  User.create(name: "Name Three", email: "email3@email.com", password: "Three", password_confirmation: "Three")
-  User.create(name: "Name Four", email: "email4@email.com", password: "Four", password_confirmation: "Four")
+  User.create(name: "Name One", email: "email1@email.com", password: "oneoneoneone", password_confirmation: "oneoneoneone")
+  User.create(name: "Name Two", email: "email2@email.com", password: "TwoTwoTwoTwo", password_confirmation: "TwoTwoTwoTwo")
+  User.create(name: "Name Three", email: "email3@email.com", password: "ThreeThree", password_confirmation: "ThreeThree")    
+  User.create(name: "Name Four", email: "email4@email.com", password: "FourFour", password_confirmation: "FourFour")
 end
 

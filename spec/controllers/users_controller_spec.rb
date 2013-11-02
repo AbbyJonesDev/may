@@ -16,9 +16,15 @@ user2 = FactoryGirl.create(:user, email: "user2@email.com")
 
 describe UsersController do
 
-  
-  
-  describe "Block visitor or guest from editing other users" do
+  describe "Visitor can edit his/her own profile" do
+    before(:each) do
+      login_user
+    end
+
+
+  end
+
+  describe "Block visitor from editing other users" do
     before(:each)  do
       login_user
     end
@@ -34,6 +40,23 @@ describe UsersController do
     end
 
     it "should not allow visitor to edit another users profile" do
+      get :edit, id: user2.id
+      response.should redirect_to('/')
+    end
+  end
+
+  describe "Block guests from editing users" do
+    it "should not allow guests to view user index" do
+      get :index
+      response.should redirect_to('/')
+    end
+
+    it "should not allow guests to view user profiles" do
+      get :show, id: user2.id
+      response.should redirect_to('/')
+    end
+
+    it "should not allow guest to edit user profiles" do
       get :edit, id: user2.id
       response.should redirect_to('/')
     end

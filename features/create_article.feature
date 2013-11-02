@@ -15,9 +15,6 @@ Scenario:
   And I fill in "Keywords" with "test, blog"
   And I attach a photo with path "/app/assets/images/coffee_cup.jpg"
   And I click on "Create Article"
-  Then I should be on the "Articles" page
-  And I should see "My First Article"
-  When I click on "My First Article"
   Then I should see the title, full text, keywords, and photo for "My First Article"
 
 Scenario:
