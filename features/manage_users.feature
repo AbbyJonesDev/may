@@ -1,7 +1,7 @@
 Feature: Manage Users
   As a site administrator
   In order to manage my site
-  I should be able to add and edit user information
+  I should be able to edit user privileges
 
 Background:
   Given I am logged in as a site owner
