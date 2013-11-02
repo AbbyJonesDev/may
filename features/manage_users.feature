@@ -7,11 +7,15 @@ Background:
   Given I am logged in as a site owner
   And the site has registered users
   Given I click "Manage Users"
-
-Scenario:
   Then I should see a list of all users
   And I can select a user
+
+Scenario:
   And I can edit user's admin status
+
+Scenario:
+  And I can delete the user
+
 
 Scenario:
   Given I am logged out

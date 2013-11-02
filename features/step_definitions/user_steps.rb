@@ -14,6 +14,11 @@ Then(/^I can edit user's admin status$/) do
   page.should have_content("successfully updated")
 end
 
+Then(/^I can delete the user$/) do
+  click_on("Delete")
+  page.should have_content("deleted")
+end
+
 Then(/^I should not be able to edit users$/) do
   page.should have_no_link("Manage Users")
 end
