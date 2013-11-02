@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     if @user.update(user_params)
       flash[:notice] = "#{@user.email} was successfully updated."
-      redirect_to user_path(@user)
+      redirect_to users_path
     else
       flash[:warning] = @user.errors.full_messages
       render action: "edit"
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
       end
     end
     def user_params
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:name, :email, :password, :admin)
     end
 
 

@@ -9,13 +9,9 @@ Background:
   Given I click "Manage Users"
 
 Scenario:
-  When I click "New"
-  Then I can add a new user
-
-Scenario:
   Then I should see a list of all users
   And I can select a user
-  And I can edit user details
+  And I can edit user's admin status
 
 Scenario:
   Given I am logged out

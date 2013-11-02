@@ -16,13 +16,18 @@ user2 = FactoryGirl.create(:user, email: "user2@email.com")
 
 describe UsersController do
 
-  describe "Visitor can edit his/her own profile" do
+  describe "Admin can change user privileges" do
     before(:each) do
-      login_user
+      login_admin
     end
 
-
+    it "should allow admin to make another user an admin" do
+      pending
+    end
   end
+
+
+  
 
   describe "Block visitor from editing other users" do
     before(:each)  do
