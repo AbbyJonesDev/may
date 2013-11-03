@@ -12,10 +12,16 @@
 
 <div class="song_list">
   <% @songs.each do  |song| -%>
-    <div class="each_song">
-      <p> <%= link_to song.title, song_path(song.id) -%>  </p>
-      <p> <%= song.description -%> </p>
+    <div class="each_song row">
+      <div class="col-md-4 col-md-offset-2">
+        <p> <%= link_to song.title, song_path(song.id) -%>  </p>
+        <p> <%= song.description -%> </p>
+      </div>
+      <div class="col-md-4">
+        <%= audio_tag song.mp3.url, controls: true, autobuffer: true %> 
+      </div>
     </div>
+    <br>
   <% end -%>
 </div>
 

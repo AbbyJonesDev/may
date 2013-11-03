@@ -4,16 +4,27 @@
   <meta name="description" content="  ">
 <% end %>
 
-<h2> <%= @song.title %> </h2>
+<h2> "<%= @song.title %>" </h2>
 
+<h3> Description </h3>
 <p> <%= @song.description %> </p>
 
-<p> Keywords: <%= @song.keywords %> </p>
+<h3> Associated Scriptures </h3>
+<p> <%= @song.scripture %> </p>
+
 
 <%= audio_tag @song.mp3.url, controls: true, autobuffer: true %> 
+<br>
 
+<%= link_to "Chord Chart", @song.chord_chart.url, :target => "_blank" unless @song.chord_chart_file_name == nil %>
+
+<p> Keywords: <%= @song.keywords %> </p>
+<p> CCLI: <%= @song.CCLI %> </p>
 
 <% if current_user.try(:admin?) %>
   <%= link_to "Edit song", edit_song_path(@song) %> <br>
   <%= link_to "Delete song", song_path(@song), :method => :delete, :confirm => "Are you sure?" %>
 <% end %>
+
+<br>
+<%= link_to "Back to Songs", songs_path %>

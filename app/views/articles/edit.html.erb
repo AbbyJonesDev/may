@@ -9,7 +9,9 @@
   <%= f.input :title, required: true %>
   <%= f.input :body, required: true, :input_html => { :cols => 90, :rows => 30, :class => "tinymce" } %>
   <%= f.input :keywords %>
+  <br>
   <%= f.input :photo, :as => :file %>
+  <br>
   <%= f.button :submit  %>
 <% end %>
 
