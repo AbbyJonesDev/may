@@ -9,7 +9,7 @@
 
 <%= image_tag @article.photo.url(:medium) -%>
 
-<p> <%= @article.body %> </p>
+<p> <%= @article.body.html_safe %> </p>
 
 <p> Keywords: <%= @article.keywords %> </p>
 

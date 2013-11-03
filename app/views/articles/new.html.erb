@@ -7,8 +7,12 @@
 
 <%= simple_form_for @article, :html => {:multipart => true } do |f| %>
   <%= f.input :title, required: true %>
-  <%= f.input :body, required: true, placeholder: 'Enter dazzling thoughts here...' %>
+  <div class="tinymce">
+  <%= f.input :body, :as => :text, required: true, :input_html => { :cols => 90, :rows => 30, :class => "tinymce" } %>
+  </div>
   <%= f.input :keywords %>
   <%= f.input :photo, :as => :file %>
   <%= f.button :submit  %>
 <% end %>
+
+  <%= tinymce -%>

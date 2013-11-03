@@ -80,6 +80,9 @@ describe ArticlesController do
       get :edit, id: @article.id 
       response.should render_template :edit
     end
+    it "should only let writers edit their own articles" do
+      pending
+    end
   end
 
   describe "POST create" do

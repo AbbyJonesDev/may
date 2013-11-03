@@ -35,8 +35,12 @@ gem 'devise'
 
 # Use Twitter Bootstrap for layout and styling
 gem 'bootstrap-sass'
+
 # Use Simple Form for creating forms easily
 gem 'simple_form'
+
+# Use TinyMCE for rich text editing
+gem "tinymce-rails", "~> 4.0.8"
 
 group :development, :test do
   gem 'sqlite3'

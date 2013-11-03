@@ -4,11 +4,11 @@ Feature:  Create a new article
   I should be able to create a new article
 
 Background:
-  
+  Given I am on the "Articles" page
+
 
 Scenario:
   Given I am logged in as a site owner
-  And I am on the "Articles" page
   When I click on "New"
   And I fill in "Title" with "My First Article"
   And I fill in "Body" with "This is the text of my article"
@@ -19,10 +19,8 @@ Scenario:
 
 Scenario:
   Given I am not logged in
-  And I am on the "Articles" page
   Then I should not see a "New" link
 
 Scenario:
   Given I am logged in as a visitor
-  And I am on the "Articles" page
   Then I should not see a "New" link
