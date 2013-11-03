@@ -3,10 +3,7 @@
     <li> <%= link_to "Music", songs_path  %> </li>
     <li> <%= link_to "Articles", articles_path  %> </li>
     <li> <%= link_to "Bio", bio_path %> </li>
-  <!-- </ul> -->
-
-
-  <!-- <ul class="navbar"> -->
+  
     <% if user_signed_in? %>
       <li>
       <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
