@@ -12,10 +12,12 @@
 
 <div class="article_list">
   <% @articles.each do  |article| -%>
-    <div class="each_article">
-      <%= image_tag article.photo.url(:medium), :class => 'img-responsive' -%> 
-      <p> <%= link_to article.title, article_path(article.id) -%>  </p>
-      <p> <%= article.preview.html_safe -%> </p>
+    <div class="row each_article">
+      <%= image_tag article.photo.url(:medium), :class => 'img-responsive col-md-4' -%> 
+      <div class="col-md-8">
+        <p> <%= link_to article.title, article_path(article.id) -%>  </p>
+        <p> <%= article.preview.html_safe -%> </p>
+      </div>
     </div>
   <% end -%>
 </div>

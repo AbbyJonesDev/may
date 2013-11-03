@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 
 # Use Twitter Bootstrap for layout and styling
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.0.1.0.rc'
 
 # Use Simple Form for creating forms easily
 gem 'simple_form'
