@@ -4,7 +4,6 @@ class ArticlesController < ApplicationController
   before_filter :check_admin_logged_in!, :except => [:show, :index]
 
 
-
   def new
     @article = Article.new
   end
@@ -50,7 +49,10 @@ class ArticlesController < ApplicationController
   def show
     id = params[:id]
     @article = Article.find(id)
+    # @comment = Comment.new(article_id = @article.id.to_i)
+    @comments = Article.find(id).comments
   end
+
 
   private
     def check_admin_logged_in! # if admin is not logged in, user must be logged in as admin

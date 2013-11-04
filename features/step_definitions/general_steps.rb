@@ -42,7 +42,7 @@ end
 #  User Steps     #
 ###################
 Given(/^I am not logged in$/) do
-  current_user = nil
+  visit('/users/sign_out')
 end
 
 Given(/^I am logged out$/) do

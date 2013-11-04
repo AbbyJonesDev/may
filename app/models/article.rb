@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
-  belongs_to :User
-  has_many :Comments
+  belongs_to :user
+  has_many :comments
   # TODO? - make photo accessible
   # attr_accessible :photo
   has_attached_file :photo, 
