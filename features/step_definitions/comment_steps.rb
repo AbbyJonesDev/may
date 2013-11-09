@@ -34,3 +34,9 @@ Then(/^I should not be able to delete comments$/) do
   # links to delete anything.
   page.should have_no_link("Delete")
 end
+
+Then(/^I should be able to delete any comment$/) do
+  # Comment4 (created in previous step) belongs to a non-admin user
+  page.find("#comment#{@comment4.id}").click_link("Delete")
+  page.should have_no_content("Not my comment")
+end
