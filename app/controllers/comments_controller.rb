@@ -23,6 +23,16 @@ def show
 end
 
 def destroy
+  check_user_logged_in!
+  @comment = Comment.find(params[:id])
+  @article = Article.find(params[:article_id])
+  if current_user.try(:admin?) || current_user.id == @comment.user_id
+    @comment.destroy
+    return redirect_to article_path(@article)
+  else
+    flash[:warning] = "You must be an administrator to perform this function"
+    return redirect_to article_path(@article)
+  end
 end
 
 def index

@@ -49,7 +49,6 @@ class ArticlesController < ApplicationController
   def show
     id = params[:id]
     @article = Article.find(id)
-    # @comment = Comment.new(article_id = @article.id.to_i)
     @comments = Article.find(id).comments
   end
 
