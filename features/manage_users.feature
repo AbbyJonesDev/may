@@ -8,14 +8,20 @@ Background:
   And the site has registered users
   Given I click "Manage Users"
   Then I should see a list of all users
-  And I can select a user
 
 Scenario:
+  And I can select a user
   And I can edit user's admin status
 
 Scenario:
+  And I can select a user
   And I can delete the user
 
+Scenario:
+  And I can view articles by the user
+
+Scenario:
+  And I can view comments by the user
 
 Scenario:
   Given I am logged out

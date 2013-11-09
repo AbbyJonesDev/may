@@ -19,6 +19,17 @@ Then(/^I can delete the user$/) do
   page.should have_content("deleted")
 end
 
+Then(/^I can view articles by the user$/) do
+  # @article = Article.create(title: "Title", body: "Article body", user_id: User.find_by_name("Name One").id)
+  # page.all('tr', :text => "Name One").click_link("1 Article")
+  # page.should have_content(@article)
+  pending
+end
+
+Then(/^I can view comments by the user$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
 Then(/^I should not be able to edit users$/) do
   page.should have_no_link("Manage Users")
 end

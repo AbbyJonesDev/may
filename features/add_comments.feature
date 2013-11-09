@@ -7,7 +7,6 @@ Background:
   Given I am logged in as a visitor
   And I am on the "Thoughts Please" article page
 
-
 Scenario:
   Then I should be able to leave comments
 
