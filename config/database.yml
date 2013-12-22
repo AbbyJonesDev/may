@@ -18,11 +18,18 @@ test: &test
   pool: 5
   timeout: 5000
 
-production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+# Configuration for production database should be set
+# via command line on the production server. 
+# This file has been untracked using:
+#    git update-index --assume-unchanged  <filename>
+# to avoid storing sensitive information about the production
+# database in a public Github file.
+
+# production:
+#   adapter: sqlite3
+#   database: db/production.sqlite3
+#   pool: 5
+#   timeout: 5000
 
 cucumber:
   <<: *test
