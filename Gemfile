@@ -58,7 +58,7 @@ group :test do
 end
 
 group :production do
-#  gem 'pg'
+ gem 'pg'
 end
 
 group :doc do
@@ -73,7 +73,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
